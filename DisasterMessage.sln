@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DisasterMessage", "DisasterMessage.pyproj", "{E1C2C16A-04EE-46FD-8C71-6F7107C9D551}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1C2C16A-04EE-46FD-8C71-6F7107C9D551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1C2C16A-04EE-46FD-8C71-6F7107C9D551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE11ACF4-CDFD-4E89-9694-F6E25D51B28A}
+	EndGlobalSection
+EndGlobal
