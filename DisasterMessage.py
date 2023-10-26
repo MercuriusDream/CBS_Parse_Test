@@ -29,17 +29,17 @@ async def main():
                 if data:
                     last_checked_index = index
                     for item in data:
-                        print("마지막 수정 날짜:", item.get("LAST_MODF_DT", "(없음)"))
-                        print("게시판 번호:", item.get("BBS_NO", "(없음)"))
-                        print("첫 등록 날짜:", item.get("FRST_REGIST_DT", "(없음)"))
-                        print("게시판 순서:", item.get("BBS_ORDR", "(없음)"))
-                        print("제목:", item.get("SJ", "(없음)"))
-                        print("인덱스 번호:", item.get("IDX_NO", "(없음)"))
-                        print("조회 횟수:", item.get("QRY_CNT", "(없음)"))
-                        print("내용:", item.get("CN", "(없음)"))
-                        print("제목:", item.get("title", "(없음)"))
-                        print("사용자 이름:", item.get("USR_NM", "(없음)"))
-                        print("사용자 경험 여부:", item.get("USR_EXPSR_AT", "(없음)"))
+                        print("LAST_MODF_DT:", item.get("LAST_MODF_DT", "(없음)"))
+                        print("BBS_NO:", item.get("BBS_NO", "(없음)"))
+                        print("FRST_REGIST_DT:", item.get("FRST_REGIST_DT", "(없음)"))
+                        print("BBS_ORDR:", item.get("BBS_ORDR", "(없음)"))
+                        print("SJ:", item.get("SJ", "(없음)"))
+                        print("IDX_NO:", item.get("IDX_NO", "(없음)"))
+                        print("QRY_CNT:", item.get("QRY_CNT", "(없음)"))
+                        print("CN:", item.get("CN", "(없음)"))
+                        print("title:", item.get("title", "(없음)"))
+                        print("USR_NM:", item.get("USR_NM", "(없음)"))
+                        print("USR_EXPSR_AT:", item.get("USR_EXPSR_AT", "(없음)"))
                         new_data_found = True  # 새로운 데이터를 찾았음을 표시
                 break  # 데이터를 찾았으므로 while 루프 종료
 
