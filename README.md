@@ -1,13 +1,13 @@
 # DisasterMessage
 
-a Basic [K-CBS](https://www.dgovkorea.go.kr/service1/g2c_03/cbs) parser. 
+a Basic [K-CBS](https://www.dgovkorea.go.kr/service1/g2c_03/cbs) parser using Requests.
 
 # Cons n Pros
 
-### Cons
-* It Ain't no got any external libs
-
 ### Pros
+* It Ain't no got any external libs, only with default libs
+
+### Cons
 * Poorly Made
 * Memory Leakge
 * ~~ATP just go build yours~~
