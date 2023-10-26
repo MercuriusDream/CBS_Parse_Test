@@ -1,4 +1,4 @@
-﻿# Version 0.0.1
+﻿# Version 0.0.2
 
 import requests
 import json
@@ -9,10 +9,18 @@ from datetime import datetime
 filename = f'{datetime.now().strftime("%Y%m%d %H%M%S")} log.txt'
 file1 = open(filename, 'a') 
 
+# 로그 메모리를 닫았다가 염
+async def resetlogmemory():
+    global file1
+    file1.close()
+    file1 = open(filename, 'a') # 메모리 누수 예방
+
 async def get_current_time():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S:%f")
 
 # 사용자로부터 시작할 인덱스 번호를 입력받음
+resetrateinformation = input("정보를 가져올 때 새로운 정보가 없음을 표시할까요? (Y/N): ")
+file1.write(f"정보를 가져올 때 새로운 정보가 없음을 표시할까요? (Y/N): {resetrateinformation}\n")
 start_index = int(input("시작할 인덱스 번호를 입력하세요: "))
 file1.write(f"시작할 인덱스 번호를 입력하세요: {start_index}\n")
 file1.flush()
@@ -77,15 +85,19 @@ async def main():
             except requests.exceptions.RequestException as e:
                 current_time = await get_current_time()
                 if '500' in str(e):
-                    print(f"{current_time} {index}번 확인 결과 새로운 데이터가 없거나 권한이 없음. 갱신 주기 재시작\n")
-                    file1.write(f"{current_time} {index}번 확인 결과 새로운 데이터가 없거나 권한이 없음. 갱신 주기 재시작\n")
-                    file1.flush()
+                    if resetrateinformation == 'Y' or resetrateinformation == 'y':
+                        print(f"{current_time} {index}번 확인 결과 새로운 데이터가 없거나 권한이 없음. 갱신 주기 재시작")
+                        file1.write(f"{current_time} {index}번 확인 결과 새로운 데이터가 없거나 권한이 없음. 갱신 주기 재시작\n")
+                        file1.flush()
                     await asyncio.sleep(1) # 1초에 여러번 실행 방지용, 하드코딩이라 언젠간 고쳐야할듯
+                    await resetlogmemory()
                 else:
-                    print(f"{current_time} HTTP 에러 {e} 발생.\n")
-                    file1.write(f"{current_time} HTTP 에러 {e} 발생.\n")
-                    file1.flush()
+                    if resetrateinformation == 'Y' or resetrateinformation == 'y':
+                        print(f"{current_time} HTTP 에러 {e} 발생.\n")
+                        file1.write(f"{current_time} HTTP 에러 {e} 발생.\n")
+                        file1.flush()
                     await asyncio.sleep(1) # 1초에 여러번 실행 방지용, 하드코딩이라 언젠간 고쳐야할듯
+                    await resetlogmemory()
                 while int(datetime.now().strftime("%S")) != 1 and int(datetime.now().strftime("%S")) != 31:
                     await asyncio.sleep(1) # 정확한 초에 실행되도록 하는 방법이 복잡해서 임시방편으로
 
